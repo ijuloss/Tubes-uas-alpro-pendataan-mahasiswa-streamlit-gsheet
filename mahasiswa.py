@@ -89,7 +89,8 @@ if aksi == "Tambah Data Mahasiswa":
                 )
                 updated_df = pd.concat([kumpulan_data, data_mahasiswa], ignore_index=True)
                 koneksi.update(worksheet="Data mahasiswa", data=updated_df)
-                st.success("Success Update Data Mahasiswa!")
+                st.success("Berhasil Menambah Data Mahasiswa!")
+                st.balloons()
 
 elif aksi == "Update Data Mahasiswa":
     st.markdown("Pilih Data yang Akan di Perbarui")
@@ -180,6 +181,7 @@ elif aksi == "Update Data Mahasiswa":
                 )
                 koneksi.update(worksheet="Data mahasiswa", data = updated_df)
                 st.success("Berhasil Perbarui Data Mahasiswa!")
+                st.balloons()
 
 # Melihat Semua Data Mahasiswa
 elif aksi == "Lihat Semua Data Mahasiswa":
@@ -198,3 +200,4 @@ elif aksi == "Hapus Data Mahasiswa":
         )
         koneksi.update(worksheet="Data mahasiswa", data = kumpulan_data)
         st.success("Data Berhasil di Hapus!")
+        st.balloons()
