@@ -8,7 +8,7 @@ st.set_page_config(
 )
 # Judul Tampilan dan Deskripsi
 st.title("Pendataan Surat Suara")
-st.markdown("##### Lengkapi data dibawah ini!")
+st.markdown("##### Lengkapi data dibawah ini !!!")
 
 # Konstanta
 CALEG = [
@@ -43,7 +43,7 @@ aksi = st.selectbox(
     [
         "Tambah Data Suara",
         "Lihat Semua Data",
-        # "Hapus Data",
+        "Hapus Data",
     ]
 )
 
@@ -83,17 +83,17 @@ if aksi == "Tambah Data Suara":
 # Melihat Semua tps
 elif aksi == "Lihat Semua Data":
     st.dataframe(kumpulan_data)
+                
+elif aksi == "Hapus Data":
+    hapus_data = st.selectbox(
+        "Pilih Nama Yang Datanya Akan dihapus", options = kumpulan_data["Nama Capres/Caleg"].tolist(), index = None
+    )
 
-# elif aksi == "Hapus Data":
-#     hapus_data = st.selectbox(
-#         "Pilih Nama Yang Datanya Akan dihapus", options = kumpulan_data["Nama Capres/Caleg"].tolist(), index = None
-#     )
-
-#     if st.button("Hapus"):
-#         kumpulan_data.drop(
-#             kumpulan_data[kumpulan_data["Nama Capres/Caleg"] == hapus_data].index,
-#             inplace = True,
-#         )
-#         koneksi.update(worksheet="Pemilu", data = kumpulan_data)
-#         st.success("Data Berhasil di Hapus!")
-#         st.balloons()
+    if st.button("Hapus"):
+        kumpulan_data.drop(
+            kumpulan_data[kumpulan_data["Nama Capres/Caleg"] == hapus_data].index,
+            inplace = True,
+        )
+        koneksi.update(worksheet="Pemilu", data = kumpulan_data)
+        st.success("Data Berhasil di Hapus!")
+        st.balloons()
